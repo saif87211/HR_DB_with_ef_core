@@ -1,2 +1,2 @@
 # HR_DB_with_ef_core
-Console Project Using EF Core
+Console Project With EF Core
