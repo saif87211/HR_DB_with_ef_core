@@ -16,7 +16,7 @@ namespace HR_DB_with_ef_core.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            string connectionString = _configuration.GetConnectionString("HRConnection");
 
             optionsBuilder.UseSqlite(connectionString);
         }
