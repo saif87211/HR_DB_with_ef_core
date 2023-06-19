@@ -11,20 +11,23 @@ namespace HR_DB_with_ef_core.Models
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; } = null!;
-        
+
         [MaxLength(50)]
         public string LastName { get; set; }
-        
+
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public int PhoneNumber { get; set; }
-        
+
         [Required]
         public DateOnly HireDate { get; set; }
-        
+
         public int Salary { get; set; }
+
+        public int JobId { get; set; }
+        public Job Job { get; set; } = null!;
     }
 }

@@ -7,6 +7,7 @@ namespace HR_DB_with_ef_core.Data
     public class HRContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Job> Jobs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
