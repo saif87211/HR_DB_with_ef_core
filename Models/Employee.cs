@@ -25,7 +25,7 @@ namespace HR_DB_with_ef_core.Models
         [Required]
         public DateOnly HireDate { get; set; }
 
-        public int Salary { get; set; }
+        public int? Salary { get; set; }
 
         public int JobId { get; set; }
         public Job Job { get; set; } = null!;
