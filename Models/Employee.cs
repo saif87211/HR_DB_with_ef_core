@@ -20,7 +20,7 @@ namespace HR_DB_with_ef_core.Models
         public string Email { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required]
         public DateOnly HireDate { get; set; }

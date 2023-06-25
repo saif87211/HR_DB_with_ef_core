@@ -11,10 +11,10 @@ public class Create
     /// <param name="lastName">Last name of an employee</param>
     /// <param name="email">Email address</param>
     /// <param name="phoneNumber">Mobile no.</param>
-    /// <param name="hireDate">Date of joining</param>
+    /// <param name="hireDate">Date of joining(yyyy-mm-dd)</param>
     /// <param name="salary">Can be null</param>
     /// <param name="jobId"></param>
-    public static void InsertingEmployee(string firstName, string lastName, string email, int phoneNumber, DateOnly hireDate, int salary, int jobId)
+    public static void InsertingEmployee(string firstName, string lastName, string email, string phoneNumber, string hireDate, int salary, int jobId)
     {
         using (var db = new HRContext())
         {
@@ -24,7 +24,7 @@ public class Create
                 LastName = lastName,
                 Email = email,
                 PhoneNumber = phoneNumber,
-                HireDate = hireDate,
+                HireDate = DateOnly.Parse(hireDate),
                 Salary = salary,
                 JobId = jobId,
             };

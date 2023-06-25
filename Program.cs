@@ -1,3 +1,1 @@
-﻿Create.InsertingJobs("General Manager", null, null);
-Create.InsertingJobs("Software Test Engineer", 19000, 28000);
-Create.InsertingJobs("Intern", 12500, null);
+﻿Create.InsertingEmployee("Mark", "Price", "iammark@yml.com", "8956238956", "2018-01-05", 55000, 4);
