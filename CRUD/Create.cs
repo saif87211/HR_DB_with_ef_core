@@ -2,10 +2,10 @@ using HR_DB_with_ef_core.Models;
 using HR_DB_with_ef_core.Data;
 using static System.Console;
 
-public class CRUD
+public class Create
 {
     /// <summary>
-    /// Inserting record to databse
+    /// Inserting record in to Employee table.
     /// </summary>
     /// <param name="firstName">Firstname of employee</param>
     /// <param name="lastName">Last name of an employee</param>
@@ -30,23 +30,33 @@ public class CRUD
             };
 
             db.Employees.Add(newEmployee);
+            db.SaveChanges();
+
             WriteLine($"New Employee is added");
         }
     }
 
-    public static void InsertingJobs(string jobTitle, int? maxSalary, int? minSalary)
+    /// <summary>
+    /// Insert record in to the Jobs Table
+    /// </summary>
+    /// <param name="jobTitle">Job postion in Oragnization(required)</param>
+    /// <param name="minSalary">minimum Salary of that position</param>
+    /// <param name="maxSalary">Maximun salary of that postion</param>
+    public static void InsertingJobs(string jobTitle, int? minSalary, int? maxSalary)
     {
         using (var db = new HRContext())
         {
             var job = new Job
             {
                 JobTitle = jobTitle,
-                MaxSalary = maxSalary,
-                MinSalary = minSalary
+                MinSalary = minSalary,
+                MaxSalary = maxSalary
             };
 
             db.Jobs.Add(job);
-            WriteLine("New employee is added");
+            db.SaveChanges();
+
+            WriteLine("New job is added");
         }
     }
 }
