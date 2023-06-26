@@ -1,1 +1,1 @@
-﻿Create.InsertingEmployee("Mark", "Price", "iammark@yml.com", "8956238956", "2018-01-05", 55000, 4);
+﻿Console.WriteLine("EF Core");
