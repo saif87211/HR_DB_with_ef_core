@@ -12,5 +12,5 @@ public class Department
     public int LocationId { get; set; }
     public Location Location { get; set; } = null!;
 
-    public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    // public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
