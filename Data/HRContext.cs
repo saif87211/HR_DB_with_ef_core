@@ -8,7 +8,8 @@ namespace HR_DB_with_ef_core.Data
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Job> Jobs { get; set; }
-
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Location> Locations { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string path = System.IO.Path.Combine(System.Environment.CurrentDirectory, "HR.db");
