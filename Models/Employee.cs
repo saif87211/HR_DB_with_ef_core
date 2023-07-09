@@ -38,6 +38,6 @@ namespace HR_DB_with_ef_core.Models
         public Job Job { get; set; } = null!;
 
         public int DepartmentId { get; set; }
-        public required Department Department { get; set; }
+        public Department Department { get; set; } = null!;
     }
 }

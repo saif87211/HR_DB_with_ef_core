@@ -10,7 +10,7 @@ public class Department
     public string DepartmentName { get; set; } = null!;
 
     public int LocationId { get; set; }
-    public required Location Location { get; set; }
+    public Location Location { get; set; } = null!;
 
     public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }

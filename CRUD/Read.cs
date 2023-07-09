@@ -1,4 +1,6 @@
 using HR_DB_with_ef_core.Data;
+using static System.Console;
+
 using ConsoleTables;                //Nuget Package ConsoleTables
 
 namespace HR_DB_with_ef_core.CRUD
@@ -12,7 +14,7 @@ namespace HR_DB_with_ef_core.CRUD
         {
             using (var db = new HRContext())
             {
-                Console.WriteLine(nameof(db.Employees));
+                WriteLine(nameof(db.Employees));
 
                 var table = new ConsoleTable(
                     "Employee Id", "Job Id",
@@ -42,7 +44,7 @@ namespace HR_DB_with_ef_core.CRUD
         {
             using (var db = new HRContext())
             {
-                Console.WriteLine(nameof(db.Employees));
+                WriteLine(nameof(db.Jobs));
 
                 var table = new ConsoleTable(
                     "Job Id", "Job Title",
@@ -60,5 +62,35 @@ namespace HR_DB_with_ef_core.CRUD
                 table.Write(); //print table
             }
         }
+
+        /// <summary>
+        /// Print All Job Record in the form of table.
+        /// </summary>
+        public static void GetAllDepartments()
+        {
+            using (var db = new HRContext())
+            {
+                var table = new ConsoleTable(
+                    "Department Id",
+                    "Department Name",
+                    "Lcoation Id"
+                );
+
+                var Departments = db.Departments.ToList();
+
+                foreach (var item in Departments)
+                {
+                    table.AddRow(
+                        item.DepartmentId,
+                        item.DepartmentName,
+                        item.LocationId
+                    );
+                }
+
+                table.Write();
+            }
+        }
+
+        
     }
 }

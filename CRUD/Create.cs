@@ -14,7 +14,7 @@ public class Create
     /// <param name="hireDate">Date of joining(yyyy-mm-dd)</param>
     /// <param name="salary">Can be null</param>
     /// <param name="jobId"></param>
-    public static void InsertingEmployee(string firstName, string lastName, string email, string phoneNumber, string hireDate, int salary, int jobId)
+    public static void InsertingEmployee(string firstName, string lastName, string email, string phoneNumber, string hireDate, int salary, int jobId, int departmentId)
     {
         using (var db = new HRContext())
         {
@@ -27,6 +27,7 @@ public class Create
                 HireDate = DateOnly.Parse(hireDate),
                 Salary = salary,
                 JobId = jobId,
+                DepartmentId = departmentId
             };
 
             db.Employees.Add(newEmployee);
@@ -57,6 +58,51 @@ public class Create
             db.SaveChanges();
 
             WriteLine("New job is added");
+        }
+    }
+
+    /// <summary>
+    /// Insert record in to the Department table.
+    /// </summary>
+    /// <param name="departmentName">Department Name</param>
+    /// <param name="locationId">Locaton Id</param>
+    public static void InsertingDepartment(string departmentName, int locationId)
+    {
+        using (var db = new HRContext())
+        {
+            var department = new Department
+            {
+                DepartmentName = departmentName,
+                LocationId = locationId
+            };
+            db.Departments.Add(department);
+            db.SaveChanges();
+
+            WriteLine("New Department is Added");
+        }
+    }
+
+    /// <summary>
+    /// Insert record in Location table.
+    /// </summary>
+    /// <param name="address">Addrees</param>
+    /// <param name="postalCode">Postal code</param>
+    /// <param name="city">City Name(Can be null)</param>
+    public static void InsertingLocation(string address, string postalCode, string? city)
+    {
+        using (var db = new HRContext())
+        {
+            var location = new Location
+            {
+                Address = address,
+                PostalCode = postalCode,
+                City = city
+            };
+
+            db.Locations.Add(location);
+            db.SaveChanges();
+
+            WriteLine("New Location is added");
         }
     }
 }
