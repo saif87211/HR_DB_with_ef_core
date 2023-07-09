@@ -34,6 +34,7 @@ namespace HR_DB_with_ef_core.CRUD
                 }
 
                 table.Write(); //print table
+                WriteLine("\n\n");
             }
         }
 
@@ -60,6 +61,7 @@ namespace HR_DB_with_ef_core.CRUD
                 }
 
                 table.Write(); //print table
+                WriteLine("\n\n");
             }
         }
 
@@ -70,6 +72,8 @@ namespace HR_DB_with_ef_core.CRUD
         {
             using (var db = new HRContext())
             {
+                WriteLine(nameof(db.Departments));
+
                 var table = new ConsoleTable(
                     "Department Id",
                     "Department Name",
@@ -88,9 +92,43 @@ namespace HR_DB_with_ef_core.CRUD
                 }
 
                 table.Write();
+                WriteLine("\n\n");
             }
         }
 
-        
+        /// <summary>
+        /// Print All Location Record in the form of table.
+        /// </summary>
+        public static void GetAllLocation()
+        {
+            using (var db = new HRContext())
+            {
+                WriteLine(nameof(db.Locations));
+
+                var table = new ConsoleTable(
+                    "Location Id",
+                    "Address",
+                    "Postal Code",
+                    "City"
+                );
+
+                var Locations = db.Locations.ToList();
+
+                foreach (var item in Locations)
+                {
+                    table.AddRow(
+                        item.LocationId,
+                        item.Address,
+                        item.PostalCode,
+                        item.City
+                    );
+                }
+
+                table.Write();
+                WriteLine("\n\n");
+            }
+        }
+
+
     }
 }
