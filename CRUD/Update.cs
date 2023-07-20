@@ -9,6 +9,18 @@ public enum EmployeeColumn
 {
     FirstName, LastName, EmailAddress, PhoneNumber, HireDate, Salary, JobId
 }
+public enum JobColumn
+{
+    JobTitle, MinSalary, MaxSalary
+}
+public enum DepartmentColumn
+{
+    DepartmentName, LocationId
+}
+public enum LocationColumn
+{
+    Address, PostalCode, City
+}
 
 public class Update
 {
@@ -54,8 +66,104 @@ public class Update
             }
             else
             {
-                WriteLine("Id is not found in database");
+                WriteLine("Id is not found in Table\n");
             }
         }
     }
+
+    /// <summary>
+    /// Update recored of Job table id you provided 
+    /// </summary>
+    /// <param name="jobId">Id of Record </param>
+    /// <param name="column">Enum value usage: 'JobColumn.JobTitle'</param>
+    /// <param name="value">value of column</param>
+    public static void UpdateJobs(int jobId, JobColumn column, string value)
+    {
+        using (var db = new HRContext())
+        {
+            var job = db.Jobs.First(j => j.JobId == jobId);
+
+            if (job != null)
+            {
+                switch (column)
+                {
+                    case JobColumn.JobTitle:
+                        job.JobTitle = value;
+                        break;
+
+                    case JobColumn.MaxSalary:
+                        job.MaxSalary = Int32.Parse(value);
+                        break;
+
+                    case JobColumn.MinSalary:
+                        job.MinSalary = Int32.Parse(value);
+                        break;
+                }
+                db.SaveChanges();
+                WriteLine("Data is updated in Job tabel\n");
+            }
+            else
+            {
+                WriteLine("Job id is not found in Table\n");
+            }
+        }
+    }
+
+    public static void UpdateDepartment(int id, DepartmentColumn column, string value)
+    {
+        using (var db = new HRContext())
+        {
+            var Department = db.Departments.Single(d => d.DepartmentId == id);
+
+            if (Department != null)
+            {
+                switch (column)
+                {
+                    case DepartmentColumn.DepartmentName:
+                        Department.DepartmentName = value;
+                        break;
+                    case DepartmentColumn.LocationId:
+                        Department.LocationId = Int32.Parse(value);
+                        break;
+                }
+                db.SaveChanges();
+                WriteLine("Data is updated in Department Table\n");
+            }
+            else
+            {
+                WriteLine("Department Id is not found in Table\n");
+            }
+        }
+    }
+
+    public static void UpdateLocation(int id, LocationColumn column, string value)
+    {
+        using (var db = new HRContext())
+        {
+            var Location = db.Locations.First(l => l.LocationId == id);
+
+            if (Location != null)
+            {
+                switch (column)
+                {
+                    case LocationColumn.Address:
+                        Location.Address = value;
+                        break;
+                    case LocationColumn.PostalCode:
+                        Location.PostalCode = value;
+                        break;
+                    case LocationColumn.City:
+                        Location.City = value;
+                        break;
+                }
+                db.SaveChanges();
+                WriteLine("Data is updated in Location Table\n");
+            }
+            else
+            {
+                WriteLine("Location id is not found in tabel\n");
+            }
+        }
+    }
+
 }
