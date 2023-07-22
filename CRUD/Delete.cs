@@ -6,6 +6,10 @@ namespace HR_DB_with_ef_core.CRUD;
 
 public class Delete
 {
+    /// <summary>
+    /// Delete single record form the table
+    /// </summary>
+    /// <param name="id">Employee Id</param>
     public static void DeleteEmployee(int id)
     {
         using (var db = new HRContext())
@@ -25,6 +29,10 @@ public class Delete
         }
     }
 
+    /// <summary>
+    /// Delete single record form the table
+    /// </summary>
+    /// <param name="id">JobId</param>
     public static void DeleteJob(int id)
     {
         using (var db = new HRContext())
@@ -44,6 +52,10 @@ public class Delete
         }
     }
 
+    /// <summary>
+    /// Delete single record form the table
+    /// </summary>
+    /// <param name="id">Department id</param>
     public static void DeleteDepartment(int id)
     {
         using (var db = new HRContext())
@@ -62,6 +74,11 @@ public class Delete
             }
         }
     }
+
+    /// <summary>
+    /// Delete single record form the table
+    /// </summary>
+    /// <param name="id">Location Id</param>
     public static void DeleteLocation(int id)
     {
         using (var db = new HRContext())

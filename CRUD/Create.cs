@@ -43,7 +43,7 @@ public class Create
     /// <param name="jobTitle">Job postion in Oragnization(required)</param>
     /// <param name="minSalary">minimum Salary of that position</param>
     /// <param name="maxSalary">Maximun salary of that postion</param>
-    public static void InsertingJobs(string jobTitle, int? minSalary, int? maxSalary)
+    public static void InsertingJobs(string jobTitle, string? minSalary, string? maxSalary)
     {
         using (var db = new HRContext())
         {

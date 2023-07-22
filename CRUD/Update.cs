@@ -92,11 +92,11 @@ public class Update
                         break;
 
                     case JobColumn.MaxSalary:
-                        job.MaxSalary = Int32.Parse(value);
+                        job.MaxSalary = value;
                         break;
 
                     case JobColumn.MinSalary:
-                        job.MinSalary = Int32.Parse(value);
+                        job.MinSalary = value;
                         break;
                 }
                 db.SaveChanges();

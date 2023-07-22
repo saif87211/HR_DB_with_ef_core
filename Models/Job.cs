@@ -9,9 +9,11 @@ namespace HR_DB_with_ef_core.Models
 
         public string JobTitle { get; set; } = null!;
 
-        public int? MinSalary { get; set; }
+        [MaxLength(6)]
+        public string? MinSalary { get; set; }
 
-        public int? MaxSalary { get; set; }
+        [MaxLength(6)]
+        public string? MaxSalary { get; set; }
 
         public ICollection<Employee> Employees { get; set; } = new List<Employee>();
     }
