@@ -10,11 +10,11 @@ namespace HR_DB_with_ef_core.Models
         public int EmployeeId { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(25)]
         [Column(Order = 2)]
         public string FirstName { get; set; } = null!;
 
-        [MaxLength(50)]
+        [MaxLength(25)]
         [Column(Order = 3)]
         public string LastName { get; set; }
 
@@ -37,7 +37,10 @@ namespace HR_DB_with_ef_core.Models
         public int JobId { get; set; }
         public Job Job { get; set; } = null!;
 
+        // public int ManagerId { get; set; }
+
         public int DepartmentId { get; set; }
         public Department Department { get; set; } = null!;
+
     }
 }

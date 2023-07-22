@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using HR_DB_with_ef_core.Models;
+
+namespace HR_DB_with_ef_core;
 
 public class Department
 {

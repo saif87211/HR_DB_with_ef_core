@@ -1,6 +1,7 @@
 using HR_DB_with_ef_core.Models;
 using HR_DB_with_ef_core.Data;
 using static System.Console;
+using HR_DB_with_ef_core;
 
 public class Create
 {

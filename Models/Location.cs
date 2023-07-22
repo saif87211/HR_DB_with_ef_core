@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+namespace HR_DB_with_ef_core;
+
 public class Location
 {
     [Key]
@@ -15,6 +17,10 @@ public class Location
 
     [Column(Order = 4), MaxLength(10)]
     public string? City { get; set; }
+
+    [Column(Order = 5)]
+    public int CountryId { get; set; }
+    // public Country Country { get; set; } = null!;
 
     public ICollection<Department> Departments { get; set; } = new List<Department>();
 }
