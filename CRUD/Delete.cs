@@ -97,4 +97,71 @@ public class Delete
             }
         }
     }
+
+    /// <summary>
+    /// Delete single record form the table
+    /// </summary>
+    /// <param name="id">Country Id</param>
+    public static void DeleteCountry(int id)
+    {
+        using (var db = new HRContext())
+        {
+            var country = db.Countries.Single(c => c.CountryId == id);
+
+            if (country != null)
+            {
+                db.Countries.Remove(country);
+                db.SaveChanges();
+                WriteLine("Data is deleted.\n");
+            }
+            else
+            {
+                WriteLine("Id is not found in Country Table\n");
+            }
+        }
+    }
+    /// <summary>
+    /// Delete single record form the table
+    /// </summary>
+    /// <param name="id">Region Id</param>
+    public static void DeleteRegion(int id)
+    {
+        using (var db = new HRContext())
+        {
+            var region = db.Regions.Single(r => r.RegionId == id);
+
+            if (region != null)
+            {
+                db.Regions.Remove(region);
+                db.SaveChanges();
+                WriteLine("Data is deleted.\n");
+            }
+            else
+            {
+                WriteLine("Id is not found in Region Table\n");
+            }
+        }
+    }
+    /// <summary>
+    /// Delete single record form the table
+    /// </summary>
+    /// <param name="id">Depedent Id</param>
+    public static void DeleteDepedent(int id)
+    {
+        using (var db = new HRContext())
+        {
+            var dependent = db.Dependents.Single(d => d.DependentId == id);
+
+            if (dependent != null)
+            {
+                db.Dependents.Remove(dependent);
+                db.SaveChanges();
+                WriteLine("Data is deleted.\n");
+            }
+            else
+            {
+                WriteLine("Id is not found in Country Table\n");
+            }
+        }
+    }
 }

@@ -106,4 +106,72 @@ public class Create
             WriteLine("New Location is added");
         }
     }
+
+    /// <summary>
+    /// Insert record in Country table.
+    /// </summary>
+    /// <param name="countryName">CountryName</param>
+    /// <param name="regionId">Region Id</param>
+    public static void InsertingCountry(string countryName, int regionId)
+    {
+        using (var db = new HRContext())
+        {
+            var country = new Country
+            {
+                CountryName = countryName,
+                RegionId = regionId
+            };
+
+            db.Countries.Add(country);
+            db.SaveChanges();
+
+            WriteLine("New Country is added");
+        }
+    }
+
+    /// <summary>
+    /// Insert record in Region table.
+    /// </summary>
+    /// <param name="RegionName">Region Name</param>
+    public static void InsertingRegion(string RegionName)
+    {
+        using (var db = new HRContext())
+        {
+            var region = new Region
+            {
+                RegionName = RegionName
+            };
+
+            db.Regions.Add(region);
+            db.SaveChanges();
+
+            WriteLine("New Region is added");
+        }
+    }
+
+    /// <summary>
+    /// Insert record in Depedent tabel.
+    /// </summary>
+    /// <param name="firstName">FirstName</param>
+    /// <param name="lastName">LastName</param>
+    /// <param name="relationship">relationship</param>
+    /// <param name="employeeId"></param>
+    public static void InsertingDepedent(string firstName, string lastName, string relationship, int employeeId)
+    {
+        using (var db = new HRContext())
+        {
+            var department = new Dependent
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Child = relationship,
+                EmployeeId = employeeId
+            };
+
+            db.Dependents.Add(department);
+            db.SaveChanges();
+
+            WriteLine("New Depedent is added");
+        }
+    }
 }

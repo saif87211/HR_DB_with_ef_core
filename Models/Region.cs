@@ -9,5 +9,5 @@ public class Region
     [MaxLength(25)]
     public string RegionName { get; set; } = null!;
 
-    public ICollection<Country> MyProperty { get; set; } = new List<Country>();
+    public ICollection<Country> Countries { get; set; } = new List<Country>();
 }

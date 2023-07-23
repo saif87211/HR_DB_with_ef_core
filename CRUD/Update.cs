@@ -7,7 +7,7 @@ namespace HR_DB_with_ef_core.CRUD;
 
 public enum EmployeeColumn
 {
-    FirstName, LastName, EmailAddress, PhoneNumber, HireDate, Salary, JobId
+    FirstName, LastName, EmailAddress, PhoneNumber, HireDate, Salary, JobId, ManagerId
 }
 public enum JobColumn
 {
@@ -19,7 +19,16 @@ public enum DepartmentColumn
 }
 public enum LocationColumn
 {
-    Address, PostalCode, City
+    Address, PostalCode, City, CountryId
+}
+public enum DependentColumn
+{
+    FirstName, LastName, Child, EmployeeId
+}
+
+public enum CountryColumn
+{
+    CountryName, RegionId
 }
 
 public class Update
@@ -59,6 +68,9 @@ public class Update
                         break;
                     case EmployeeColumn.JobId:
                         Employee.JobId = Int32.Parse(value);
+                        break;
+                    case EmployeeColumn.ManagerId:
+                        Employee.ManagerId = Int32.Parse(value);
                         break;
                 }
                 db.SaveChanges();
@@ -109,6 +121,12 @@ public class Update
         }
     }
 
+    /// <summary>
+    /// Update recored of Department table id you provided 
+    /// </summary>
+    /// <param name="id">Id of Department</param>
+    /// <param name="column">Enum value usage: 'DepartmentColumn.DepartmentName'</param>
+    /// <param name="value">value of column</param>
     public static void UpdateDepartment(int id, DepartmentColumn column, string value)
     {
         using (var db = new HRContext())
@@ -136,6 +154,12 @@ public class Update
         }
     }
 
+    /// <summary>
+    /// Update recored of Location table id you provided 
+    /// </summary>
+    /// <param name="id">Id of Location</param>
+    /// <param name="column">Enum value usage: 'LocationColumn.Address'</param>
+    /// <param name="value">Value for update</param>
     public static void UpdateLocation(int id, LocationColumn column, string value)
     {
         using (var db = new HRContext())
@@ -155,6 +179,9 @@ public class Update
                     case LocationColumn.City:
                         Location.City = value;
                         break;
+                    case LocationColumn.CountryId:
+                        Location.CountryId = Int32.Parse(value);
+                        break;
                 }
                 db.SaveChanges();
                 WriteLine("Data is updated in Location Table\n");
@@ -166,4 +193,97 @@ public class Update
         }
     }
 
+    /// <summary>
+    /// Update recored of Country table id you provided 
+    /// </summary>
+    /// <param name="id">Id of Country</param>
+    /// <param name="column">Enum value usage: 'CountryColumn.CountryName'</param>
+    /// <param name="value">Value for update</param>
+    public static void UpdateCountry(int id, CountryColumn column, string value)
+    {
+        using (var db = new HRContext())
+        {
+            var country = db.Countries.FirstOrDefault(c => c.CountryId == id);
+
+            if (country != null)
+            {
+                switch (column)
+                {
+                    case CountryColumn.CountryName:
+                        country.CountryName = value;
+                        break;
+                    case CountryColumn.RegionId:
+                        country.RegionId = Int32.Parse(value);
+                        break;
+                }
+                db.SaveChanges();
+                WriteLine("Data is updated in Country Table\n");
+            }
+            else
+            {
+                WriteLine("Country id is not found in tabel\n");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Update recored of Region table id you provided 
+    /// </summary>
+    /// <param name="id">Id of Region</param>
+    /// <param name="value">Value for update</param>
+    public static void UpdateRegion(int id, string value)
+    {
+        using (var db = new HRContext())
+        {
+            var region = db.Regions.First(r => r.RegionId == id);
+
+            if (region != null)
+            {
+                region.RegionName = value;
+                db.SaveChanges();
+                WriteLine("Data is updated in Region Table\n");
+            }
+            else
+            {
+                WriteLine("Region id is not found in tabel\n");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Update recored of Dependents table id you provided 
+    /// </summary>
+    /// <param name="id">Id of Dependents</param>
+    /// <param name="column">Enum value usage: 'DependentColumn.FirstName'</param>
+    /// <param name="value">Value for update</param>
+    public static void UpdateDependents(int id, DependentColumn column, string value)
+    {
+        using (var db = new HRContext())
+        {
+            var dependent = db.Dependents.Single(d => d.DependentId == id);
+
+            if (dependent != null)
+            {
+                switch (column)
+                {
+                    case DependentColumn.FirstName:
+                        dependent.FirstName = value;
+                        break;
+                    case DependentColumn.LastName:
+                        dependent.LastName = value;
+                        break;
+                    case DependentColumn.Child:
+                        dependent.Child = value;
+                        break;
+                    case DependentColumn.EmployeeId:
+                        dependent.EmployeeId = Int32.Parse(value);
+                        break;
+                }
+            }
+            else
+            {
+                WriteLine("Depedent id is not found in tabel\n");
+            }
+        }
+    }
 }
