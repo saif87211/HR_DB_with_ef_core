@@ -11,5 +11,5 @@ public class Country
     // public ICollection<Location> Locations { get; set; } = new List<Location>();
 
     public int RegionId { get; set; }
-    public Region Region { get; set; }
+    public Region Region { get; set; } = null!;
 }

@@ -10,6 +10,9 @@ namespace HR_DB_with_ef_core.Data
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Dependent> Dependents { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Region> Regions { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string path = System.IO.Path.Combine(System.Environment.CurrentDirectory, "HR.db");
