@@ -20,7 +20,7 @@ public class Location
 
     [Column(Order = 5)]
     public int CountryId { get; set; }
-    // public Country Country { get; set; } = null!;
+    public Country Country { get; set; } = null!;
 
     public ICollection<Department> Departments { get; set; } = new List<Department>();
 }

@@ -111,7 +111,8 @@ namespace HR_DB_with_ef_core.CRUD
                     "Location Id",
                     "Address",
                     "Postal Code",
-                    "City"
+                    "City",
+                    "Country Id"
                 );
 
                 var Locations = db.Locations.ToList();
@@ -122,7 +123,8 @@ namespace HR_DB_with_ef_core.CRUD
                         item.LocationId,
                         item.Address,
                         item.PostalCode,
-                        item.City
+                        item.City,
+                        item.CountryId
                     );
                 }
 

@@ -8,30 +8,12 @@ public class Create
     /// <summary>
     /// Inserting record in to Employee table.
     /// </summary>
-    /// <param name="firstName">Firstname of employee</param>
-    /// <param name="lastName">Last name of an employee</param>
-    /// <param name="email">Email address</param>
-    /// <param name="phoneNumber">Mobile no.</param>
-    /// <param name="hireDate">Date of joining(yyyy-mm-dd)</param>
-    /// <param name="salary">Can be null</param>
-    /// <param name="jobId"></param>
-    public static void InsertingEmployee(string firstName, string lastName, string email, string phoneNumber, string hireDate, int salary, int jobId, int departmentId)
+    /// <param name="employee">employee Object</param>
+    public static void InsertingEmployee(Employee employee)
     {
         using (var db = new HRContext())
         {
-            var newEmployee = new Employee
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                Email = email,
-                PhoneNumber = phoneNumber,
-                HireDate = DateOnly.Parse(hireDate),
-                Salary = salary,
-                JobId = jobId,
-                DepartmentId = departmentId
-            };
-
-            db.Employees.Add(newEmployee);
+            db.Employees.Add(employee);
             db.SaveChanges();
 
             WriteLine($"New Employee is added");
@@ -89,7 +71,7 @@ public class Create
     /// <param name="address">Addrees</param>
     /// <param name="postalCode">Postal code</param>
     /// <param name="city">City Name(Can be null)</param>
-    public static void InsertingLocation(string address, string postalCode, string? city)
+    public static void InsertingLocation(string address, string postalCode, string? city, int countryId)
     {
         using (var db = new HRContext())
         {
@@ -97,7 +79,8 @@ public class Create
             {
                 Address = address,
                 PostalCode = postalCode,
-                City = city
+                City = city,
+                CountryId = countryId
             };
 
             db.Locations.Add(location);

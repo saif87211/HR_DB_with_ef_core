@@ -37,12 +37,15 @@ namespace HR_DB_with_ef_core.Models
         public int JobId { get; set; }
         public Job Job { get; set; } = null!;
 
-        public int ManagerId { get; set; }
-        // public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+        public int? ManagerId { get; set; }
+
+        [ForeignKey(nameof(ManagerId))]
+        public Employee Manger { get; set; }
+        public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 
         public int DepartmentId { get; set; }
         public Department Department { get; set; } = null!;
 
-        // public ICollection<Dependent> Dependents { get; set; } = new List<Dependent>();
+        public ICollection<Dependent> Dependents { get; set; } = new List<Dependent>();
     }
 }
