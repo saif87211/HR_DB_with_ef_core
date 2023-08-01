@@ -147,7 +147,7 @@ public class Create
             {
                 FirstName = firstName,
                 LastName = lastName,
-                Child = relationship,
+                RelationsShip = relationship,
                 EmployeeId = employeeId
             };
 

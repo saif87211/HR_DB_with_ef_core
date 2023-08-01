@@ -40,7 +40,8 @@ namespace HR_DB_with_ef_core.Models
         public int? ManagerId { get; set; }
 
         [ForeignKey(nameof(ManagerId))]
-        public Employee Manger { get; set; }
+        public Employee Manager { get; set; }
+        [InverseProperty("Manager")]
         public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 
         public int DepartmentId { get; set; }

@@ -216,7 +216,7 @@ namespace HR_DB_with_ef_core.CRUD
                         item.DependentId,
                         item.FirstName,
                         item.LastName,
-                        item.Child,
+                        item.RelationsShip,
                         item.EmployeeId
                         );
                 }

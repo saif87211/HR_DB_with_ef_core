@@ -18,8 +18,8 @@ public class Dependent
 
     [MaxLength(25)]
     [Column(Order = 4)]
-    public string Child { get; set; } = null!;
+    public string RelationsShip { get; set; } = null!;
 
     public int EmployeeId { get; set; }
-    // public Employee Employee { get; set; } = null!;
+    public Employee Employee { get; set; } = null!;
 }

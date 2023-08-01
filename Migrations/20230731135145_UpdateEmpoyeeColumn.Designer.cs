@@ -3,6 +3,7 @@ using System;
 using HR_DB_with_ef_core.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR_DB_with_ef_core.Migrations
 {
     [DbContext(typeof(HRContext))]
-    partial class HRContextModelSnapshot : ModelSnapshot
+    [Migration("20230731135145_UpdateEmpoyeeColumn")]
+    partial class UpdateEmpoyeeColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
@@ -180,8 +183,6 @@ namespace HR_DB_with_ef_core.Migrations
 
                     b.HasIndex("JobId");
 
-                    b.HasIndex("ManagerId");
-
                     b.ToTable("Employees");
                 });
 
@@ -259,13 +260,11 @@ namespace HR_DB_with_ef_core.Migrations
 
             modelBuilder.Entity("HR_DB_with_ef_core.Models.Dependent", b =>
                 {
-                    b.HasOne("HR_DB_with_ef_core.Models.Employee", "Employee")
+                    b.HasOne("HR_DB_with_ef_core.Models.Employee", null)
                         .WithMany("Dependents")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("HR_DB_with_ef_core.Models.Employee", b =>
@@ -282,15 +281,9 @@ namespace HR_DB_with_ef_core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HR_DB_with_ef_core.Models.Employee", "Manager")
-                        .WithMany("Employees")
-                        .HasForeignKey("ManagerId");
-
                     b.Navigation("Department");
 
                     b.Navigation("Job");
-
-                    b.Navigation("Manager");
                 });
 
             modelBuilder.Entity("HR_DB_with_ef_core.Country", b =>
@@ -311,8 +304,6 @@ namespace HR_DB_with_ef_core.Migrations
             modelBuilder.Entity("HR_DB_with_ef_core.Models.Employee", b =>
                 {
                     b.Navigation("Dependents");
-
-                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("HR_DB_with_ef_core.Models.Job", b =>

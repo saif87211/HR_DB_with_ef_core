@@ -273,7 +273,7 @@ public class Update
                         dependent.LastName = value;
                         break;
                     case DependentColumn.Child:
-                        dependent.Child = value;
+                        dependent.RelationsShip = value;
                         break;
                     case DependentColumn.EmployeeId:
                         dependent.EmployeeId = Int32.Parse(value);
