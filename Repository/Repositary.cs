@@ -34,7 +34,7 @@ namespace HR_DB_with_ef_core
         public T GetFirstOrDefault(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = dbSet;
-            query.Where(filter);
+            query = query.Where(filter);
             return query.FirstOrDefault();
         }
 
