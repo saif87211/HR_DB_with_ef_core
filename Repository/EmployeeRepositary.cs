@@ -14,11 +14,11 @@ public class EmployeeRepositary : Repositary<Employee> ,IEmployee
         _db = db;
     }
 
-    public void Save()
-    {
-        _db.SaveChanges();
-    }
-
+    // public IQueryable<Employee> Top10EmployeeWithHighestSalary()
+    // {
+    //     IQueryable<Employee> employeeList = _db.Employees.Where(e => e.Salary > 0).First;
+    //     return _db.Employees.Where()
+    // }
     public void Update(Employee employee)
     {
         _db.Employees.Update(employee);

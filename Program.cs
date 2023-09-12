@@ -1,11 +1,15 @@
-﻿using HR_DB_with_ef_core.CRUD;
+﻿using HR_DB_with_ef_core.Models;
 using HR_DB_with_ef_core.Data;
 using HR_DB_with_ef_core.Repository;
 using static System.Console;
+using HR_DB_with_ef_core;
 
-using (var unitOfWork = new UnitOfWork(new HRContext()))
+using (var db = new UnitOfWork(new HRContext()))
 {
-    var employee = unitOfWork.Employee.GetFirstOrDefault(e=>e.EmployeeId == 5);
+    var employeeis = db.Employee.GetAll();
 
-    WriteLine($"Name of an Employee: {employee.FirstName} {employee.LastName} ");
+    foreach (var item in employeeis)
+    {
+        WriteLine($"Name: {item.FirstName} {item.LastName}, joinning Date: {item.HireDate}");
+    }
 }
