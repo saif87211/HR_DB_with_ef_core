@@ -64,7 +64,7 @@ public class Update
                         Employee.HireDate = DateOnly.Parse(value);
                         break;
                     case EmployeeColumn.Salary:
-                        Employee.Salary = Int32.Parse(value);
+                        Employee.Salary = value;
                         break;
                     case EmployeeColumn.JobId:
                         Employee.JobId = Int32.Parse(value);

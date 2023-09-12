@@ -31,7 +31,7 @@ namespace HR_DB_with_ef_core.Models
         [Column(Order = 6)]
         public DateOnly HireDate { get; set; }
 
-        public int? Salary { get; set; }
+        public string? Salary { get; set; }
 
         [Column(Order = 7)]
         public int JobId { get; set; }
