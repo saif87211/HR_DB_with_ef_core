@@ -14,11 +14,17 @@ public class EmployeeRepositary : Repositary<Employee> ,IEmployee
         _db = db;
     }
 
-    // public IQueryable<Employee> Top10EmployeeWithHighestSalary()
-    // {
-    //     IQueryable<Employee> employeeList = _db.Employees.Where(e => e.Salary > 0).First;
-    //     return _db.Employees.Where()
-    // }
+    public IEnumerable<Employee> EmployeeListJoinYear(int year)
+    {
+        return _db.Employees.Where(e=>e.HireDate.Year == year).ToList();
+    }
+
+    public IEnumerable<Employee> Top10HighestSalryEmployees()
+    {
+        IEnumerable<Employee> employees = _db.Employees.OrderByDescending(e=>e.Salary).Take(10).ToList();
+        return employees;
+    }
+    
     public void Update(Employee employee)
     {
         _db.Employees.Update(employee);
